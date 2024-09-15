@@ -16,9 +16,10 @@ jobs:
         uses: sonarsource/sonarcloud-github-action@v1
         env:
               SONAR_TOKEN: ${{ secrets.SONAR }}
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           args: >
-              -Dsonar.organization=tanveerkkhan89
-              -Dsonar.projectKey=my-springboot-app
+              -Dsonar.organization="tanveerkkhan89"
+              -Dsonar.projectKey="my-springboot-app"
 
      
