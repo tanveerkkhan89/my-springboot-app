@@ -24,7 +24,10 @@ jobs:
           distribution: 'adopt'
 
       - name: Build and Analyze with Maven
-        run: mvn clean verify sonar:sonar -Dsonar.login=${{ secrets.SONAR }}
+        env: 
+            SONAR: ${{ secrets.SONAR }}
+        run: mvn clean verify sonar:sonar -Dsonar.login=${SONAR} -Dsonar.branch.name=main     
+
 
       - name: Upload code coverage to SonarCloud
         uses: sonarsource/sonarcloud-github-action@v1
