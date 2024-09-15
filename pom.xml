@@ -13,7 +13,7 @@
 
     <properties>
         <java.version>17</java.version>
-        <spring-boot.version>3.3.2</spring-boot.version> <!-- Specify Spring Boot version here -->
+        <spring-boot.version>3.3.2</spring-boot.version>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.organization>tanveerkkhan89</sonar.organization>
         <sonar.projectKey>my-springboot-app</sonar.projectKey>
@@ -23,7 +23,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>${spring-boot.version}</version> <!-- Use property for version -->
+            <version>${spring-boot.version}</version>
         </dependency>
     </dependencies>
 
@@ -32,7 +32,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-boot.version}</version> <!-- Use property for version -->
+                <version>${spring-boot.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -44,7 +44,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.1</version> <!-- Use a newer version -->
+                <version>3.10.1</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
@@ -53,8 +53,26 @@
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
-                <version>3.9.1.2184</version> <!-- Use the latest version -->
+                <version>3.9.1.2184</version>
+                <configuration>
+                    <!-- Optional: Configure additional properties here if needed -->
+                </configuration>
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>sonar</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonarsource.scanner.maven</groupId>
+                        <artifactId>sonar-maven-plugin</artifactId>
+                        <version>3.9.1.2184</version>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
