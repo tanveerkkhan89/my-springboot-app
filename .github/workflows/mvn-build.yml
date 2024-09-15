@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  sonar-scan:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -15,11 +15,10 @@ jobs:
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
         env:
-              SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-              GITHUB_TOKEN: ${{secrets.GIT_TOKEN}}
+              SONAR_TOKEN: ${{ secrets.SONAR }}
         with:
           args: >
               -Dsonar.organization=tanveerkkhan89
-              -Dsonar.projectKey=my-springboot-app  
+              -Dsonar.projectKey=my-springboot-app
 
      
